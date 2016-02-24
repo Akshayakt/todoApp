@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+<head >
+	<title>TodoApp</title>
+	<link rel="stylesheet" type="text/css" href="./assets/styleSheets/bootstrap.css">
+        <script type="text/javascript" src="./assets/js/lib/jquery-1.11.3.min.js">
+        </script>
+        <script type="text/javascript" src="./assets/js/lib/bootstrap.js">
+        </script>
+        <script type="text/javascript" src="./assets/js/lib/angular.min.js">
+        </script>
+         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+        <script src=" https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.7/angular-filter.js">
+        </script>
+
+</head>
+<body >
+        <header>
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">TodoApp</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div id="todos" ng-controller="todosController" style="margin-top:150px;">
+        	
+        		<input type="text" ng-model="newTodo" placeholder="todo">
+        		<input type="text" ng-model="todoCatg" placeholder="todo category">
+				<button ng-click="addtodo()">addTodo</button>
+				<ul ng-repeat="(key, value) in todosList | groupBy: 'todoCatg'">
+					<a href="{{key.id}}">{{key}}</a>
+					<li ng-repeat="todo in value ">
+						{{todo.text}}
+						<!-- <a ng-href="">{{ key }}</a> -->
+						<a href="" ng-click="removeTodo(todo)">remove</a>
+					</li>
+				</ul>
+        </div>
+        <script type="text/javascript" src="./controllers/todosController.js"></script>
+        <script type="text/javascript" src="./service/storage.js"></script>
+</body>
+</html>
+
