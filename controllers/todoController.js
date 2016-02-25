@@ -28,8 +28,9 @@ todoApp.controller('todoController',function ($scope,getLocalStorage,$stateParam
 			$scope.list.splice(i,1);
 			getLocalStorage.updateTodos($scope.todosList);
 		};
-
-	$scope.key=$stateParams.key;
+	// 	console.log($stateParams.key);
+	// $scope.key=$stateParams.key;
+	// console.log($scope.key);
 	$scope.list = _.where($scope.todosList, {todoCatg:$scope.key});
 
 	$scope.$watch('list', function () {

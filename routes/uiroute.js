@@ -1,13 +1,13 @@
 todoApp.config(function($stateProvider, $urlRouterProvider){
       
-      $urlRouterProvider.otherwise("/todoList")
+      $urlRouterProvider.otherwise("/index.html")
       
       $stateProvider
-        .state('todoList', {
-            url: "/todoList",
-            templateUrl: "./views/partials/todolist.html",
-            controller:'todoController'
-        })
+        // .state('todoList', {
+        //     url: "/todoList",
+        //     templateUrl: "./views/partials/todolist.html",
+        //     controller:'todoController'
+        // })
         .state('todoList.catg',{
           url: "/:key",
           templateUrl:"./views/partials/catgList.html",

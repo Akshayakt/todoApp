@@ -10,7 +10,5 @@
         	<ul ng-repeat="(key, value) in todosList | groupBy: 'todoCatg'">
 					<a ui-sref="todoList.catg({key:key})">{{key}}</a>
 			</ul>
-
-			<div ui-view>
 			</div>
  </div>
