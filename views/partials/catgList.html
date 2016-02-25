@@ -1,0 +1,18 @@
+
+
+<ul ng-repeat="(key, value) in list | groupBy: 'todoCatg'">
+					
+					<li ng-repeat="todo in value ">
+
+						<input type="checkbox" ng-checked="todo.completed"  ng-click="changeTodo()"></input>
+						<span ng-show="!todo.completed">{{ todo.text }}</span>
+						<del ng-show="todo.completed">{{ todo.text }}</del>
+						<a href="" ng-click="removeTodo(todo)">remove</a>
+
+
+					</li>
+
+					
+					
+					<p><span>{{completedCount}} of {{list.length}} completed </span</p>
+				</ul>

@@ -14,6 +14,8 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.7/angular-filter.js">
         </script>
         	<script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+        	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js">
+        </script>
 
 
 </head>
@@ -25,20 +27,20 @@
                         <a class="navbar-brand" href="#">TodoApp</a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li class=""><a href="#todolist">Todolist</a>
+                        <li class=""><a ui-sref="todoList">Todolist</a>
                         </li>
-                        <li> <a href="#addtodo"> Addtodo</a>             
-                        </li>
+                      <!--   <li> <a ui-sref="addTodo"> Addtodo</a>             
+                        </li> -->
                     </ul>
                 </div>
             </nav>
         </header>
        
-        <div ng-view></div>
+        <div ui-view></div>
+        
         <script type="text/javascript" src="app.js"></script>
-        <script type="text/javascript" src="./controllers/todosController.js"></script>
         <script type="text/javascript" src="./controllers/todoController.js"></script>
-        <script type="text/javascript" src="./routes/todoRoute.js"></script>
+        <script type="text/javascript" src="./routes/uiroute.js"></script>
         <script type="text/javascript" src="./service/storage.js"></script>
 </body>
 </html>

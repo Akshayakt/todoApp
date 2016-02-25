@@ -1,4 +1,4 @@
-todoApp.controller('todoController',function ($scope,getLocalStorage){
+todoApp.controller('todoController',function ($scope,getLocalStorage,$stateParams,$filter){
 
 	$scope.todosList=getLocalStorage.getTodos();
 	
@@ -7,22 +7,33 @@ todoApp.controller('todoController',function ($scope,getLocalStorage){
 			id:Date.now(),
 			text:$scope.newTodo,
 			todoCatg:$scope.todoCatg,
-			completed:false
+			completed:false		
 		});
-		 getLocalStorage.updateTodos($scope.todosList);
+
+		getLocalStorage.updateTodos($scope.todosList);
 		$scope.newTodo="";
 		$scope.todoCatg="";
 	};
+
 	$scope.changeTodo= function () {
 		this.todo.completed= !this.todo.completed;
-		$scope.completed = _.where($scope.todosList, {completed: true}).length;
+		getLocalStorage.updateTodos($scope.todosList);
 	}
 
-	// $scope.completed = 0;
+
 	$scope.removeTodo=function (todo) {
 			var i=$scope.todosList.indexOf(todo);
 			$scope.todosList.splice(i,1);
+			var i=$scope.list.indexOf(todo);
+			$scope.list.splice(i,1);
 			getLocalStorage.updateTodos($scope.todosList);
 		};
-	
+
+	$scope.key=$stateParams.key;
+	$scope.list = _.where($scope.todosList, {todoCatg:$scope.key});
+
+	$scope.$watch('list', function () {
+                 $scope.remainingCount = $filter('filter')($scope.list, { completed: false }).length;
+                 $scope.completedCount = $scope.list.length - $scope.remainingCount;
+                 }, true);
 });

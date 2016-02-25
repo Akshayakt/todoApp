@@ -8,7 +8,7 @@
 				<ul ng-repeat="(key, value) in todosList | groupBy: 'todoCatg'">
 					<a href="{{key.id}}">{{key}}</a>
 					<li ng-repeat="todo in value ">
-						<input type="checkbox" ng-checked="todo.completed" ng-click="changeTodo()"></input>
+						<input type="checkbox" ng-checked="{{completedTodo}}" ng-click="changeTodo()"></input>
 						<span ng-show="!todo.completed">{{ todo.text }}</span>
 						<del ng-show="todo.completed">{{ todo.text }}</del>
 						<a href="" ng-click="removeTodo(todo)">remove</a>
