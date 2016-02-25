@@ -1,0 +1,17 @@
+<div id="todos"  style="margin-top:150px;">
+        	
+			<h1>create new Todo</h1>
+
+        		<input type="text" ng-model="newTodo" placeholder="todo">
+        		<input type="text" ng-model="todoCatg" placeholder="todo category">
+				<button ng-click="addtodo()">addTodo</button>
+				<ul ng-repeat="(key, value) in todosList | groupBy: 'todoCatg'">
+					<a href="{{key.id}}">{{key}}</a>
+					<li ng-repeat="todo in value ">
+						<input type="checkbox" ng-checked="todo.completed" ng-click="changeTodo()"></input>
+						<span ng-show="!todo.completed">{{ todo.text }}</span>
+						<del ng-show="todo.completed">{{ todo.text }}</del>
+						<a href="" ng-click="removeTodo(todo)">remove</a>
+					</li>
+				</ul>
+        </div>

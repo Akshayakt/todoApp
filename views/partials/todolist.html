@@ -1,0 +1,6 @@
+ <div style="margin-top:150px;" ng-controller="todosController">
+        	<h1>TodoList</h1>
+        	<ul ng-repeat="(key, value) in todosList | groupBy: 'todoCatg'">
+					<a href="{{key.id}}">{{key}}</a>
+			</ul>
+ </div>
