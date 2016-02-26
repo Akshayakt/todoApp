@@ -2,7 +2,8 @@
 <html ng-app="todoApp">
 <head >
 	<title>TodoApp</title>
-	<link rel="stylesheet" type="text/css" href="./assets/styleSheets/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.css">
+     <link href="./assets/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> 
         <script type="text/javascript" src="./assets/js/lib/jquery-1.11.3.min.js">
         </script>
         <script type="text/javascript" src="./assets/js/lib/bootstrap.js">
@@ -29,30 +30,35 @@
                     <ul class="nav navbar-nav">
                         <li class=""><a ui-sref="todoList">Todolist</a>
                         </li>
-                      <!--   <li> <a ui-sref="addTodo"> Addtodo</a>             
-                        </li> -->
                     </ul>
+                  
+                     
                 </div>
             </nav>
         </header>
-         <div style="margin-top:150px;"  >
+        <div id="addtodos">
+            <input type="text" ng-model="newTodo" placeholder="todo">
+            <input type="text" ng-model="todoCatg" placeholder="todo category">
+            <button ng-model="addBtn" ng-click="addtodo()">addTodo</button>
+        </div>
+         <div id="todolist" >
 
-			<input type="text" ng-model="newTodo" placeholder="todo">
-        	<input type="text" ng-model="todoCatg" placeholder="todo category">
-			<button ng-click="addtodo()">addTodo</button>
+			
 
         	<h1>TodoList</h1>
 
-        	<ul ng-repeat="(key, value) in todosList | groupBy: 'todoCatg'">
-					<a ui-sref="todoList.catg({ key: key })">{{key}}</a>
+        	<ul class="list-group" ng-repeat="(key, value) in todosList | groupBy: 'todoCatg'">
+				<li class="list-group-item list-group-item-info li-width">
+                    <a ui-sref="catg({key:key})">{{key}}</a>               
+                </li>
 			</ul>
 			</div>
        
-        <div ui-view></div>
+        <div id="catList" ui-view></div>
 
         <script type="text/javascript" src="app.js"></script>
         <script type="text/javascript" src="./controllers/todoController.js"></script>
-        <script type="text/javascript" src="./controllers/todosController.js"></script>
+        <script type="text/javascript" src="./controllers/catgListController.js"></script>
         <script type="text/javascript" src="./routes/uiroute.js"></script>
         <script type="text/javascript" src="./service/storage.js"></script>
 </body>

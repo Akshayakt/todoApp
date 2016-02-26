@@ -1,6 +1,5 @@
  
  todoApp.config(function ($routeProvider) {
- 	
 		$routeProvider
 			.when('/addtodo',{
 				templateUrl:  './views/partials/todo.html',
@@ -13,6 +12,5 @@
 			.otherwise({
         		redirectTo: '/index.html'
       		});
-			
 });
  
