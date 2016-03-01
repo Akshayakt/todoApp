@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+<head >
+	<title>TodoApp</title>
+	<link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.css">
+     <link href="./assets/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> 
+        <script type="text/javascript" src="./assets/js/lib/jquery-1.11.3.min.js">
+        </script>
+        <script type="text/javascript" src="./assets/js/lib/bootstrap.js">
+        </script>
+        <script type="text/javascript" src="./assets/js/lib/angular.min.js">
+        </script>
+         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+        <script src=" https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.7/angular-filter.js">
+        </script>
+        	<script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+        	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js">
+        </script>
+
+
+</head>
+<body ng-controller="todoController">
+        <header>
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">TodoApp</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class=""><a ui-sref="todoList">Todolist</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div id="addtodos">
+            <input type="text" ng-model="newTodo" placeholder="todo">
+            <input type="text" ng-model="todoCatg" placeholder="todo category">
+            <button ng-model="addBtn" ng-click="addtodo()">addTodo</button>
+        </div>
+         <div id="todolist" >
+
+			
+
+        	<h1>TodoList</h1>
+
+        	<ul class="list-group" ng-repeat="(key, value) in todosList | groupBy: 'todoCatg'">
+				<li class="list-group-item list-group-item-info li-width">
+                    <a ui-sref="catg({key:key})">{{key}}</a>               
+                </li>
+			</ul>
+			</div>
+       
+        <div id="catList" ui-view></div>
+
+        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="./controllers/todoController.js"></script>
+        <script type="text/javascript" src="./controllers/catgListController.js"></script>
+        <script type="text/javascript" src="./routes/uiroute.js"></script>
+        <script type="text/javascript" src="./service/storage.js"></script>
+</body>
+</html>
+
