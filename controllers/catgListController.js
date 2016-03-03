@@ -1,5 +1,5 @@
-todoApp.controller('catgListController',function ($scope,getLocalStorage){
+todoApp.controller('catgListController',function ($scope,catgList){
 
-	$scope.todosList=getLocalStorage.getTodos();
-	$scope.list = _.where($scope.todosList, {completed: true}).length;
+	$scope.list=catgList;
+	console.log(catgList);
 });

@@ -1,8 +1,8 @@
 
 
-<ul ng-repeat="(key, value) in list | groupBy: 'todoCatg'">
+<ul >
 					
-					<li ng-repeat="todo in value ">
+					<li ng-repeat="todo in list ">
 
 						<input type="checkbox" ng-checked="todo.completed"  ng-click="changeTodo()"></input>
 						<span ng-show="!todo.completed">{{ todo.text }}</span>
@@ -14,5 +14,5 @@
 
 					
 					
-					<p><span>{{completedCount}} of {{list.length}} completed </span</p>
+					<!-- <p><span>{{completedCount}} of {{list.length}} completed </span</p> -->
 				</ul>

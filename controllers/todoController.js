@@ -1,7 +1,7 @@
 todoApp.controller('todoController',function ($scope,getLocalStorage,$stateParams,$filter){
 
 	$scope.todosList=getLocalStorage.getTodos();
-	
+	console.log();
 	$scope.addtodo= function () {
 		$scope.todosList.push({
 			id:Date.now(),
@@ -29,11 +29,11 @@ todoApp.controller('todoController',function ($scope,getLocalStorage,$stateParam
 			getLocalStorage.updateTodos($scope.todosList);
 		};
 
-	$scope.key=$stateParams.key;
-	$scope.list = _.where($scope.todosList, {todoCatg:$scope.key});
+	// $scope.key=$stateParams.key;
+	// $scope.list = _.where($scope.todosList, {todoCatg:$scope.key});
 
-	$scope.$watch('list', function () {
-                 $scope.remainingCount = $filter('filter')($scope.list, { completed: false }).length;
-                 $scope.completedCount = $scope.list.length - $scope.remainingCount;
-                 }, true);
+	// $scope.$watch('list', function () {
+ //                 $scope.remainingCount = $filter('filter')($scope.list, { completed: false }).length;
+ //                 $scope.completedCount = $scope.list.length - $scope.remainingCount;
+ //                 }, true);
 });

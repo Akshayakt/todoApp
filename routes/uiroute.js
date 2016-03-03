@@ -11,6 +11,13 @@ todoApp.config(function($stateProvider, $urlRouterProvider){
         .state('todoList.catg',{
           url: "/:key",
           templateUrl:"./views/partials/catgList.html",
-          controller:'todoController'
+           controller:'catgListController',
+            resolve:{            
+              catgList: function(catglistSrv,$stateParams){
+               var catg=catglistSrv.getCatgs($stateParams.key); 
+              return catg;
+            }
+           }
+         
         })
     });
